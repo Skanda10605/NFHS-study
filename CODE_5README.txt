@@ -26,3 +26,6 @@ HB =  https://www.who.int/vmnis/indicators/haemoglobin/en/
 
 in code_5 could be used as a centralized dictionary for these 5 metrics  
 *****NOTE: CODE_5 only contains data from NFHS5******* ( still working on NFHS4 ) 
+*****THE PATH TO THE FILE IN THE CODE HAS TO BE CHANGED TO YOUR PATHWAY SAVED ON YOUR SYSTEM LOCALLY**** 
+
+for example (r"D:\NFHS\DataBase-Files\2019-2021\Individual Recode-IAIR7EDT\IAIR7EFL.DTA" is the default and has to be changed accordigly 
