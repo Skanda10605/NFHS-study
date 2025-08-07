@@ -1,0 +1,54 @@
+CODE_5.2 = NFSH5 
+
+A reall important change has been added to code 5.2 compared to 5. and 5.1 which makes them ****INVALID***
+5.2 is now the most progressed and correct one 
+
+while analyzing data it was noticed that there were some data that WERE NOT real medical values and were basically causing false result 
+for example = BMI = 9998, systolic BP = 0 or 996 , Glucose = 0 or 996, waist = 998 and ...... some NaN  datas or something that were like a garabage data? 
+
+so before defining the threshold I added an extra FILTER : 
+
+df = df[df['v445'] < 6000]          
+df = df[df['sb29s'].between(50, 300)]  
+df = df[df['sb18s'].between(50, 300)]  
+df = df[df['sb74'] < 300]
+ 
+which basically filters out the bad rows so we get true meaning ful abnormality statics 
+
+*****ANOTHER ADDITION**** the threshold has been enhanced and is now much more solid. in the last two verzions it didnt cover both greater than and less than for all variables. but now it does. 
+
+therefore it makes 5.0 and 5.1 invalid since now the number of totally normal women has changed to 9386 out of 638817 (1.47%) ---> Very few women have all 5 metrics within normal range. That means >98% of the population has at least one abnormal biomarker
+
+and has changed the population to Filtered size: ~638,817
+
+and changes the abnormality count too : 
+
+  Number of Abnormalities  Women Count  Percent   
+ ----------------------------------------------------
+ 0 (Fully normal)         9,386        1.47%     
+ 1                        335,309      52.48%    
+ 2                        237,895      37.24%    
+ 3                        39,088       6.12%     
+ 4                        17,137       2.68%     
+ 5 (All 5 abnormal)       2            \~0.0003% 
+
+
+ALSO+++++++
+
+some new data which was another feature professor wanted was found : 
+********finding out the most common combination of abnormalities across these 5 health metrics**********
+
+according to the code 5.2 
+
+ BMI  SBP  Glucose  Waist  Hb  Count                                     
+ -------------------------------------------------------------------------
+ F    F    F        T      F   328,595   Most common: only waist abnormal      
+ T    F    F        T      F   209,771   BMI+Waist combo (obesity?)            
+ F    T    F        T      F   22,341    SBP + Waist                           
+ F         T        T      F   17,534    Glucose + Waist (pre-diabetes)        
+ T    T    F        T      F   17,222    BMI + SBP + Waist (metabolic cluster) 
+      T    T        T      F   17,131    SBP + Glucose + Waist                 
+ F    F    F        F      F   9,386     Fully normal                         
+ T    F    F        F      F   6,028     Only BMI abnormal                     
+ F    F    T        T      F   4,911     Glucose + Waist                       
+ T    F    T        T      F   4,008     BMI + Glucose + Waist                 
