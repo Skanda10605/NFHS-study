@@ -1,0 +1,73 @@
+threshold_sets:
+  - name: base
+    bmi_abn_ge: 23.0
+    bp_sbp_ge: 140
+    bp_dbp_ge: 90
+    glucose_abn_ge: 200
+    waist_f_ge_cm: 80
+    hb_f_lt_gdl: 12.0
+
+  - name: liberal_hgb
+    bmi_abn_ge: 23.0
+    bp_sbp_ge: 140
+    bp_dbp_ge: 90
+    glucose_abn_ge: 200
+    waist_f_ge_cm: 80
+    hb_f_lt_gdl: 11.5
+
+  - name: tight_bp
+    bmi_abn_ge: 23.0
+    bp_sbp_ge: 130
+    bp_dbp_ge: 80
+    glucose_abn_ge: 200
+    waist_f_ge_cm: 80
+    hb_f_lt_gdl: 12.0
+
+  - name: tight_bp__liberal_hgb
+    bmi_abn_ge: 23.0
+    bp_sbp_ge: 130
+    bp_dbp_ge: 80
+    glucose_abn_ge: 200
+    waist_f_ge_cm: 80
+    hb_f_lt_gdl: 11.5
+
+  # --- NEW sensitivity presets ---
+  - name: bmi25
+    bmi_abn_ge: 25.0
+    bp_sbp_ge: 140
+    bp_dbp_ge: 90
+    glucose_abn_ge: 200
+    waist_f_ge_cm: 80
+    hb_f_lt_gdl: 12.0
+
+  - name: waist88
+    bmi_abn_ge: 23.0
+    bp_sbp_ge: 140
+    bp_dbp_ge: 90
+    glucose_abn_ge: 200
+    waist_f_ge_cm: 88
+    hb_f_lt_gdl: 12.0
+
+  - name: bmi25__waist88
+    bmi_abn_ge: 25.0
+    bp_sbp_ge: 140
+    bp_dbp_ge: 90
+    glucose_abn_ge: 200
+    waist_f_ge_cm: 88
+    hb_f_lt_gdl: 12.0
+
+  - name: bmi25__waist88__tight_bp
+    bmi_abn_ge: 25.0
+    bp_sbp_ge: 130
+    bp_dbp_ge: 80
+    glucose_abn_ge: 200
+    waist_f_ge_cm: 88
+    hb_f_lt_gdl: 12.0
+
+  - name: bmi25__waist88__tight_bp__liberal_hgb
+    bmi_abn_ge: 25.0
+    bp_sbp_ge: 130
+    bp_dbp_ge: 80
+    glucose_abn_ge: 200
+    waist_f_ge_cm: 88
+    hb_f_lt_gdl: 11.5
