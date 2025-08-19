@@ -1,0 +1,108 @@
+Data hygiene (key points):
+
+Used DHS weights v005/1e6.
+
+Per-metric denominators = women with data for that metric.
+
+“Fully normal” = all five metrics present and all five normal.
+
+Outlier guards: improbable BMI (<10 or ≥60), BP (SBP<70/≥260 or DBP<40/≥150), Hb (2–20 g/dL), waist (40–150 cm), glucose (40–500 mg/dL).
+
+After cleaning, women with all 5 measures: ~682,775.
+
+Baseline results (weighted)
+
+Cut-offs: BMI≥23, BP≥140/90, Glucose≥200 mg/dL, Waist≥80 cm, Hb<12.0 g/dL.
+
+BMI abnormal: 37.95%
+
+BP abnormal: 9.88%
+
+Glucose abnormal: 1.42% (random sugar, stringent by design)
+
+Waist abnormal: 41.04%
+
+Hemoglobin abnormal: 57.89%
+
+Fully normal (among all five present): 18.25%
+
+Sensitivity to thresholds (weighted)
+
+All scenarios are in section1_threshold_sensitivity.csv; cut-offs stored in thresholds.yml.
+
+Liberal Hb (11.5 g/dL): Hb abnormal 45.35%; Fully normal = 24.25%.
+
+Tight BP (130/80): BP abnormal 39.11%; Fully normal = 13.11%.
+
+BMI≥25: BMI abnormal 23.88%; Fully normal = 20.55%.
+
+Waist≥88 cm: Waist abnormal 20.42%; Fully normal = 21.68%.
+
+BMI≥25 & Waist≥88: Fully normal = 26.07%.
+
+BMI≥25 & Waist≥88 & BP 130/80: Fully normal = 17.80%.
+
+… with Hb 11.5: Fully normal = 23.81%.
+
+Co-abnormalities
+
+section1_upset_intersections_base.csv (data for an UpSet plot)
+
+figs/top15_combos_base.png (fallback bar chart)
+
+section1_combos_obs_vs_expected_base.csv (observed vs independence expectation; enrichment)
+
+Most common combinations (weighted, base; among women with ≥1 abnormality and all five present):
+
+HGB only: ~29.22%
+
+BMI + WAIST + HGB: 12.84%
+
+BMI + WAIST: 10.66%
+
+WAIST + HGB: 6.27%
+
+BMI + HGB: 4.32%
+
+“More-than-chance” enrichment (observed ÷ expected under independence):
+
+BMI+BP+WAIST: 3.90×
+
+BMI+GLU+WAIST: 3.74×
+
+BMI+GLU+WAIST+HGB: 2.82×
+
+BMI+WAIST: 1.83×
+
+BMI+WAIST+HGB: 1.61×
+
+Depleted (occur less than chance): WAIST only (0.47×), BMI only (0.42×), WAIST+HGB (0.48×).
+
+
+Repro & artifacts in the repo
+
+Notebook: Code_6.ipynb (end-to-end pipeline; survey-weighted)
+
+Data products:
+
+nfhs5_women_biomarkers.parquet (merged/clean metrics)
+
+nfhs5_women_flags.parquet (booleans + “fully_normal_strict”)
+
+Section 1 outputs:
+
+thresholds.yml (all cut-off sets)
+
+section1_threshold_sensitivity.csv
+
+section1_upset_intersections_base.csv
+
+section1_combos_obs_vs_expected_base.csv
+
+figs/top15_combos_base.png
+
+Hb device bias: literature suggests NFHS Hb may over-estimate anemia; hence the 11.5 g/dL sensitivity.
+
+Random glucose is a strict screen; prevalence will be low by design.
+
+All percentages are survey-weighted; denominators are metric-specific “has data”; “fully normal” is restricted to the all-five-present set.
